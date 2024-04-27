@@ -1,0 +1,41 @@
+local adminPlayers = {
+    "Rozxino" -- Your name here.
+}
+
+local function isAdmin(player)
+    return table.find(adminPlayers, player.Name) ~= nil
+end
+
+local function handleAdminCommand(player, command)
+    if isAdmin(player) then
+        if command == "Re" then
+            player.Character:BreakJoints()
+        elseif command == "Kill All" then
+          player.Character:BreakJoints()
+        elseif command == "Poop" then
+        
+        elseif command == "Fling" then
+        print("Game not backdoored.")
+        elseif command == "Ban All" then
+        print("Game not backdoored")
+        elseif command == "Kick All" then
+        print("Game not backdoored.")
+        elseif command == "teleport" then
+        print("A player needs to have an item teleport.")
+        elseif command == "Speed 50" then
+            player.Character.Humanoid.WalkSpeed = 50
+            elseif command == "Speed 14" then
+            player.Character.Humanoid.WalkSpeed = 14
+            elseif command == "Jp 50" then
+            player.Character.Humanoid.JumpPower = 50
+        else
+            print("Unknown admin command.")
+        end
+    else
+        print("You do not have permission to use admin commands.")
+    end
+end
+
+game.ReplicatedStorage.AdminCommand.OnServerEvent:Connect(function(player, command)
+    handleAdminCommand(player, command)
+end)
